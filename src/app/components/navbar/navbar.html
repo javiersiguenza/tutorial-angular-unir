@@ -1,0 +1,28 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-brand" routerLink="/home" style="cursor: pointer;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" class="logo">
+        <path fill="#DD0031" d="M125,30L31.9,63.2l14.2,123.1L125,230l78.9-43.7l14.2-123.1L125,30z"/>
+        <path fill="#C3002F" d="M125,30v22.2l-0.1,0.1V230l78.9-43.7l14.2-123.1L125,30z"/>
+        <path fill="#FFFFFF" d="M125,52.1L66.8,182.6h21.7l11.7-29.2h49.4l11.7,29.2H183L125,52.1z M142,135.4H108l17-40.9L142,135.4z"/>
+      </svg>
+      <span class="brand-text">Angular Tutorial</span>
+    </div>
+    
+    <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-menu" [class.active]="isMenuOpen">
+      <li><a routerLink="/home" routerLinkActive="active" (click)="closeMenu()">Inicio</a></li>
+      <li><a routerLink="/justificacion" routerLinkActive="active" (click)="closeMenu()">Justificación</a></li>
+      <li><a routerLink="/instalacion" routerLinkActive="active" (click)="closeMenu()">Instalación</a></li>
+      <li><a routerLink="/primeros-pasos" routerLinkActive="active" (click)="closeMenu()">Primeros Pasos</a></li>
+      <li><a routerLink="/utilizacion" routerLinkActive="active" (click)="closeMenu()">Utilización</a></li>
+      <li><a routerLink="/funcionamiento" routerLinkActive="active" (click)="closeMenu()">Funcionamiento</a></li>
+      <li><a routerLink="/conclusiones" routerLinkActive="active" (click)="closeMenu()">Conclusiones</a></li>
+    </ul>
+  </div>
+</nav>

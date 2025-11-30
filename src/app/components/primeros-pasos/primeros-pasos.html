@@ -1,0 +1,152 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 class="page-title">Primeros pasos con Angular</h1>
+    <p class="page-subtitle">Crea tu primera aplicación "Hola Mundo" y comprende los conceptos básicos</p>
+  </div>
+
+  <div class="content-section">
+    <div class="card">
+      <h2>🎯 Hola mundo en Angular</h2>
+      <p>Vamos a crear una aplicación simple que muestre un mensaje.</p>
+      
+      <div class="step">
+        <h3>Paso 1: Crear el proyecto</h3>
+        <div class="code-block">
+          <button class="copy-btn" (click)="copyToClipboard('ng new hola-mundo --routing=false --style=css\ncd hola-mundo')" title="Copiar código">
+            <i class="fas fa-copy"></i>
+            Copiar
+          </button>
+          <pre><code>ng new hola-mundo --routing=false --style=css
+cd hola-mundo</code></pre>
+        </div>
+      </div>
+
+      <div class="step">
+        <h3>Paso 2: Modificar app.component.ts</h3>
+        <div class="code-block">
+          <button class="copy-btn" (click)="copyToClipboard(componentTsCode)" title="Copiar código">
+            <i class="fas fa-copy"></i>
+            Copiar
+          </button>
+          <pre><code>import {{ '{' }} Component {{ '}' }} from '@angular/core';
+
+@Component({{'{' }}
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+{{'}'}})
+export class AppComponent {{'{' }}
+  title = 'Hola Mundo desde Angular!';
+  nombre = 'Desarrollador';
+  
+  saludar() {{'{' }}
+    alert('¡Bienvenido a Angular!');
+  {{'}' }}
+{{'}' }}</code></pre>
+        </div>
+      </div>
+
+      <div class="step">
+        <h3>Paso 3: Modificar app.component.html</h3>
+        <div class="code-block">
+          <button class="copy-btn" (click)="copyToClipboard(templateHtmlCode)" title="Copiar código">
+            <i class="fas fa-copy"></i>
+            Copiar
+          </button>
+          <pre><code>&lt;div class="container"&gt;
+  &lt;h1&gt;{{ '{{' }} title {{ '}}' }}&lt;/h1&gt;
+  &lt;p&gt;Hola, {{ '{{' }} nombre {{ '}}' }}!&lt;/p&gt;
+  &lt;button (click)="saludar()"&gt;Saludar&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="step">
+        <h3>Paso 4: Ejecutar la aplicación</h3>
+        <div class="code-block">
+          <button class="copy-btn" (click)="copyToClipboard(serveCode)" title="Copiar código">
+            <i class="fas fa-copy"></i>
+            Copiar
+          </button>
+          <pre><code>ng serve --open</code></pre>
+        </div>
+        <p>La aplicación se abrirá en <strong>http://localhost:4200</strong></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🔍 Conceptos básicos</h2>
+      
+      <div class="concept-grid">
+        <div class="concept-card">
+          <h3>Interpolación</h3>
+          <code>{{ '{{' }} variable {{ '}}' }}</code>
+          <p>Muestra valores de variables en el HTML</p>
+        </div>
+        
+        <div class="concept-card">
+          <h3>Property binding</h3>
+          <code>[propiedad]="valor"</code>
+          <p>Vincula propiedades del componente a elementos HTML</p>
+        </div>
+        
+        <div class="concept-card">
+          <h3>Event binding</h3>
+          <code>(evento)="metodo()"</code>
+          <p>Escucha eventos del usuario</p>
+        </div>
+        
+        <div class="concept-card">
+          <h3>Two-way binding</h3>
+          <code>[(ngModel)]="variable"</code>
+          <p>Sincronización bidireccional de datos</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💡 Ejemplo interactivo</h2>
+      <div class="interactive-example">
+        <h3>Contador simple</h3>
+        <div class="code-block">
+          <pre><code>// app.component.ts
+contador = 0;
+
+incrementar() {{'{' }}
+  this.contador++;
+{{'}' }}
+
+decrementar() {{'{' }}
+  this.contador--;
+{{'}' }}
+
+// app.component.html
+&lt;div&gt;
+  &lt;h2&gt;Contador: {{ '{{' }} contador {{ '}}' }}&lt;/h2&gt;
+  &lt;button (click)="incrementar()"&gt;+&lt;/button&gt;
+  &lt;button (click)="decrementar()"&gt;-&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-container">
+      <h3>📹 Tutorial en video</h3>
+      <div class="video-placeholder">
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/htPYk6QxacQ" 
+            title="Tutorial Hola mundo en Angular"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="navigation-buttons">
+      <button class="btn btn-secondary" (click)="navigateWithScrollTop('/instalacion')">← Instalación</button>
+      <button class="btn btn-primary" (click)="navigateWithScrollTop('/utilizacion')">Utilización →</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,185 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 class="page-title">Utilización del framework</h1>
+    <p class="page-subtitle">Aprende a crear y estructurar aplicaciones Angular desde cero</p>
+  </div>
+
+  <div class="content-section">
+    <div class="card">
+      <h2>🏗️ Crear una aplicación base</h2>
+      
+      <div class="step">
+        <h3>1. Crear el proyecto</h3>
+        <div class="code-block">
+          <button class="copy-btn" (click)="copyToClipboard(createProjectCode)" title="Copiar código">
+            <i class="fas fa-copy"></i>
+            Copiar
+          </button>
+          <pre><code>ng new mi-app --routing --style=scss</code></pre>
+        </div>
+      </div>
+
+      <div class="step">
+        <h3>2. Estructura de carpetas</h3>
+        <div class="file-tree">
+          <div class="tree-item">📁 src/app/</div>
+          <div class="tree-item indent-1">📁 components/ <span class="comment">← Tus componentes</span></div>
+          <div class="tree-item indent-1">📁 services/ <span class="comment">← Servicios</span></div>
+          <div class="tree-item indent-1">📁 models/ <span class="comment">← Interfaces/Modelos</span></div>
+          <div class="tree-item indent-1">📁 guards/ <span class="comment">← Guards de rutas</span></div>
+          <div class="tree-item indent-1">📄 app.component.ts</div>
+          <div class="tree-item indent-1">📄 app.routes.ts</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <h3>3. Crear componentes</h3>
+        <div class="code-block">
+          <button class="copy-btn" (click)="copyToClipboard(generateComponentsCode)" title="Copiar código">
+            <i class="fas fa-copy"></i>
+            Copiar
+          </button>
+          <pre><code># Componente simple
+ng generate component components/header
+
+# Componente con routing
+ng generate component pages/home
+
+# Servicio
+ng generate service services/data</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>👁️ Visualizar resultados</h2>
+      
+      <div class="method-grid">
+        <div class="method-card">
+          <h3>Servidor de desarrollo</h3>
+          <div class="code-block">
+            <button class="copy-btn" (click)="copyToClipboard(devServerCode)" title="Copiar código">
+              <i class="fas fa-copy"></i>
+              Copiar
+            </button>
+            <pre><code>ng serve</code></pre>
+          </div>
+          <p>✅ Recarga automática al guardar cambios</p>
+          <p>🌐 http://localhost:4200</p>
+        </div>
+
+        <div class="method-card">
+          <h3>Modo producción</h3>
+          <div class="code-block">
+            <button class="copy-btn" (click)="copyToClipboard(buildCode)" title="Copiar código">
+              <i class="fas fa-copy"></i>
+              Copiar
+            </button>
+            <pre><code>ng build
+# Archivos en dist/</code></pre>
+          </div>
+          <p>📦 Optimizado y minificado</p>
+          <p>🚀 Listo para desplegar</p>
+        </div>
+
+        <div class="method-card">
+          <h3>Puerto personalizado</h3>
+          <div class="code-block">
+            <button class="copy-btn" (click)="copyToClipboard(customPortCode)" title="Copiar código">
+              <i class="fas fa-copy"></i>
+              Copiar
+            </button>
+            <pre><code>ng serve --port 4300</code></pre>
+          </div>
+          <p>🔧 Cambia el puerto por defecto</p>
+        </div>
+
+        <div class="method-card">
+          <h3>Abrir navegador</h3>
+          <div class="code-block">
+            <button class="copy-btn" (click)="copyToClipboard(openBrowserCode)" title="Copiar código">
+              <i class="fas fa-copy"></i>
+              Copiar
+            </button>
+            <pre><code>ng serve --open</code></pre>
+          </div>
+          <p>🌍 Abre automáticamente el navegador</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🔧 Configuración de rutas</h2>
+      <div class="code-block">
+        <button class="copy-btn" (click)="copyToClipboard(routesCode)" title="Copiar código">
+          <i class="fas fa-copy"></i>
+          Copiar
+        </button>
+        <pre><code>// app.routes.ts
+import {{ '{' }} Routes {{ '}' }} from '@angular/router';
+import {{ '{' }} HomeComponent {{ '}' }} from './pages/home/home.component';
+import {{ '{' }} AboutComponent {{ '}' }} from './pages/about/about.component';
+
+export const routes: Routes = [
+  {{ '{' }} path: '', component: HomeComponent {{ '}' }},
+  {{ '{' }} path: 'about', component: AboutComponent {{ '}' }},
+  {{ '{' }} path: '**', redirectTo: '' {{ '}' }} // Ruta no encontrada
+];</code></pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📦 Ejemplo de componente completo</h2>
+      <div class="code-block">
+        <button class="copy-btn" (click)="copyToClipboard(userCardCode)" title="Copiar código">
+          <i class="fas fa-copy"></i>
+          Copiar
+        </button>
+        <pre><code>// user-card.component.ts
+import {{ '{' }} Component, Input {{ '}' }} from '@angular/core';
+
+@Component({{'{' }}
+  selector: 'app-user-card',
+  templateUrl: './user-card.component.html',
+  styleUrls: ['./user-card.component.scss']
+{{'}'}})
+export class UserCardComponent {{'{' }}
+  @Input() nombre: string = '';
+  @Input() rol: string = '';
+  
+  mostrarInfo() {{'{' }}
+    console.log(`Usuario: ${{'{' }}this.nombre{{'}' }}, Rol: ${{'{' }}this.rol{{'}' }}`);
+  {{'}' }}
+{{'}' }}
+
+// user-card.component.html
+&lt;div class="card"&gt;
+  &lt;h3&gt;{{ '{{' }} nombre {{ '}}' }}&lt;/h3&gt;
+  &lt;p&gt;{{ '{{' }} rol {{ '}}' }}&lt;/p&gt;
+  &lt;button (click)="mostrarInfo()"&gt;Ver Info&lt;/button&gt;
+&lt;/div&gt;
+
+// Uso en otro componente
+&lt;app-user-card 
+  [nombre]="'Juan Pérez'" 
+  [rol]="'Desarrollador'"&gt;
+&lt;/app-user-card&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>💡 Consejos útiles</h3>
+      <ul>
+        <li>Usa <code>ng serve --open</code> para desarrollo rápido</li>
+        <li>Las DevTools de Chrome/Firefox son esenciales para debugging</li>
+        <li>Instala Angular DevTools (extensión de navegador)</li>
+        <li>Usa <code>ng lint</code> para verificar el código</li>
+      </ul>
+    </div>
+
+    <div class="navigation-buttons">
+      <button class="btn btn-secondary" (click)="navigateWithScrollTop('/primeros-pasos')">← Primeros pasos</button>
+      <button class="btn btn-primary" (click)="navigateWithScrollTop('/funcionamiento')">Funcionamiento →</button>
+    </div>
+  </div>
+</div>

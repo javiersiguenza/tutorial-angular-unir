@@ -1,0 +1,150 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 0;
+  
+  .nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo {
+      width: 40px;
+      height: 40px;
+      animation: rotate 20s linear infinite;
+    }
+    
+    .brand-text {
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+    }
+  }
+  
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    
+    span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    
+    &.active {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+      
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+    }
+  }
+  
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      a {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        display: block;
+        position: relative;
+        
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+          transform: translateY(-2px);
+        }
+        
+        &.active {
+          background: rgba(255, 255, 255, 0.2);
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    .menu-toggle {
+      display: flex;
+      z-index: 1001;
+    }
+    
+    .nav-menu {
+      position: fixed;
+      top: 70px;
+      right: -100%;
+      flex-direction: column;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      width: 280px;
+      padding: 2rem;
+      border-radius: 0 0 0 20px;
+      box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.2);
+      transition: right 0.3s ease;
+      gap: 0.5rem;
+      
+      &.active {
+        right: 0;
+      }
+      
+      li a {
+        font-size: 1.1rem;
+        padding: 1rem;
+      }
+    }
+  }
+}

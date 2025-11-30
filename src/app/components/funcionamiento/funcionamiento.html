@@ -1,0 +1,225 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 class="page-title">Funcionamiento de Angular</h1>
+    <p class="page-subtitle">Comprende la arquitectura y el ciclo de vida de las aplicaciones Angular</p>
+  </div>
+
+  <div class="content-section">
+    <div class="card">
+      <h2>🏗️ Arquitectura de Angular</h2>
+      <p>Angular funciona con una arquitectura basada en componentes, módulos y servicios.</p>
+      
+      <div class="architecture-diagram">
+        <div class="arch-item">
+          <h3>📦 Componentes</h3>
+          <p>Bloques de construcción básicos. Cada componente tiene:</p>
+          <ul>
+            <li><strong>.ts</strong> - Lógica TypeScript</li>
+            <li><strong>.html</strong> - Template/Vista</li>
+            <li><strong>.css/.scss</strong> - Estilos</li>
+            <li><strong>.spec.ts</strong> - Pruebas</li>
+          </ul>
+        </div>
+        
+        <div class="arch-item">
+          <h3>🔧 Servicios</h3>
+          <p>Código reutilizable que puede ser inyectado en componentes:</p>
+          <ul>
+            <li>Lógica de negocio</li>
+            <li>Llamadas HTTP</li>
+            <li>Gestión de estado</li>
+            <li>Utilidades compartidas</li>
+          </ul>
+        </div>
+        
+        <div class="arch-item">
+          <h3>🛣️ Routing</h3>
+          <p>Navegación entre vistas:</p>
+          <ul>
+            <li>Rutas declarativas</li>
+            <li>Lazy loading</li>
+            <li>Guards de navegación</li>
+            <li>Parámetros de ruta</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🔄 Ciclo de vida de componentes</h2>
+      <div class="lifecycle-grid">
+        <div class="lifecycle-card">
+          <h4>ngOnInit()</h4>
+          <p>Se ejecuta una vez al inicializar el componente. Ideal para cargar datos.</p>
+        </div>
+        <div class="lifecycle-card">
+          <h4>ngOnChanges()</h4>
+          <p>Se ejecuta cuando cambian los valores de @Input.</p>
+        </div>
+        <div class="lifecycle-card">
+          <h4>ngOnDestroy()</h4>
+          <p>Antes de destruir el componente. Limpieza de suscripciones.</p>
+        </div>
+        <div class="lifecycle-card">
+          <h4>ngAfterViewInit()</h4>
+          <p>Después de inicializar las vistas del componente.</p>
+        </div>
+      </div>
+      
+      <div class="code-block">
+        <pre><code>export class MyComponent implements OnInit, OnDestroy {{'{' }}
+  ngOnInit() {{'{' }}
+    console.log('Componente inicializado');
+  {{'}' }}
+  
+  ngOnDestroy() {{'{' }}
+    console.log('Componente destruido');
+  {{'}' }}
+{{'}' }}</code></pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📝 Editar y modificar archivos</h2>
+      
+      <div class="edit-section">
+        <h3>Estructura de un componente</h3>
+        <div class="code-block">
+          <button class="copy-btn" (click)="copyToClipboard(componentCode)" title="Copiar código">
+            <i class="fas fa-copy"></i>
+            Copiar
+          </button>
+          <pre><code>// mi-componente.component.ts
+import {{ '{' }} Component {{ '}' }} from '@angular/core';
+
+@Component({{'{' }}
+  selector: 'app-mi-componente',    // Cómo se usa: &lt;app-mi-componente&gt;
+  templateUrl: './mi-componente.component.html',
+  styleUrls: ['./mi-componente.component.scss']
+{{'}'}})
+export class MiComponenteComponent {{'{' }}
+  // Propiedades
+  titulo = 'Mi Título';
+  items = ['Item 1', 'Item 2', 'Item 3'];
+  
+  // Métodos
+  agregarItem() {{'{' }}
+    this.items.push('Nuevo Item');
+  {{'}' }}
+{{'}' }}</code></pre>
+        </div>
+
+        <h3>Template HTML</h3>
+        <div class="code-block">
+          <button class="copy-btn" (click)="copyToClipboard(templateCode)" title="Copiar código">
+            <i class="fas fa-copy"></i>
+            Copiar
+          </button>
+          <pre><code>&lt;div class="container"&gt;
+  &lt;h1&gt;{{ '{{' }} titulo {{ '}}' }}&lt;/h1&gt;
+  
+  &lt;!-- Directivas estructurales --&gt;
+  &lt;ul&gt;
+    &lt;li *ngFor="let item of items"&gt;
+      {{ '{{' }} item {{ '}}' }}
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  
+  &lt;!-- Event binding --&gt;
+  &lt;button (click)="agregarItem()"&gt;Agregar&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🔗 Referenciar componentes</h2>
+      
+      <div class="step">
+        <h3>1. En el mismo módulo/componente padre</h3>
+        <div class="code-block">
+          <button class="copy-btn" (click)="copyToClipboard(appComponentCode)" title="Copiar código">
+            <i class="fas fa-copy"></i>
+            Copiar
+          </button>
+          <pre><code>// app.component.ts
+import {{ '{' }} Component {{ '}' }} from '@angular/core';
+import {{ '{' }} MiComponenteComponent {{ '}' }} from './mi-componente/mi-componente.component';
+
+@Component({{'{' }}
+  selector: 'app-root',
+  imports: [MiComponenteComponent], // Standalone components
+  template: `&lt;app-mi-componente&gt;&lt;/app-mi-componente&gt;`
+{{'}'}})
+export class AppComponent {{ '{' }} {{ '}' }}</code></pre>
+        </div>
+      </div>
+
+      <div class="step">
+        <h3>2. Usando servicios compartidos</h3>
+        <div class="code-block">
+          <pre><code>// data.service.ts
+import {{ '{' }} Injectable {{ '}' }} from '@angular/core';
+
+@Injectable({{'{' }}
+  providedIn: 'root' // Disponible en toda la app
+{{'}'}})
+export class DataService {{'{' }}
+  private datos = [];
+  
+  obtenerDatos() {{'{' }}
+    return this.datos;
+  {{'}' }}
+{{'}' }}
+
+// En cualquier componente
+import {{ '{' }} DataService {{ '}' }} from './services/data.service';
+
+constructor(private dataService: DataService) {{ '{' }} {{ '}' }}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🎨 Directivas y pipes</h2>
+      
+      <div class="directives-grid">
+        <div class="directive-card">
+          <h4>*ngIf</h4>
+          <code>&lt;div *ngIf="mostrar"&gt;Visible&lt;/div&gt;</code>
+        </div>
+        <div class="directive-card">
+          <h4>*ngFor</h4>
+          <code>&lt;li *ngFor="let item of items"&gt;{{ '{{' }} item {{ '}}' }}&lt;/li&gt;</code>
+        </div>
+        <div class="directive-card">
+          <h4>[ngClass]</h4>
+          <code>&lt;div [ngClass]="{{'{' }}'activo': isActive{{'}' }}"&gt;&lt;/div&gt;</code>
+        </div>
+        <div class="directive-card">
+          <h4>Pipes</h4>
+          <code>{{ '{{' }} fecha | date:'short' {{ '}}' }}</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-container">
+      <h3>📹 Video explicativo</h3>
+      <div class="video-placeholder">
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/z4JUm0Bq9AM" 
+            title="Arquitectura de Angular explicada"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="navigation-buttons">
+      <button class="btn btn-secondary" (click)="navigateWithScrollTop('/utilizacion')">← Utilización</button>
+      <button class="btn btn-primary" (click)="navigateWithScrollTop('/conclusiones')">Conclusiones →</button>
+    </div>
+  </div>
+</div>

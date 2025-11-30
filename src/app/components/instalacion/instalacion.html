@@ -1,0 +1,119 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 class="page-title">Instalación de Angular</h1>
+    <p class="page-subtitle">Guía paso a paso para configurar tu entorno de desarrollo</p>
+  </div>
+
+  <div class="content-section">
+    <div class="card">
+      <h2>1. Instalar Node.js y npm</h2>
+      <p>Node.js incluye npm, el gestor de paquetes necesario para Angular.</p>
+      <div class="code-block">
+        <button class="copy-btn" (click)="copyToClipboard(nodeVersionCode)" title="Copiar código">
+          <i class="fas fa-copy"></i>
+          Copiar
+        </button>
+        <pre><code># Verificar instalación
+node --version
+npm --version</code></pre>
+      </div>
+      <p><strong>Descarga:</strong> <a href="https://nodejs.org/" target="_blank">nodejs.org</a></p>
+      <p>✅ Versión recomendada: Node.js 18.19+ o 20.11+</p>
+    </div>
+
+    <div class="card">
+      <h2>2. Instalar Angular CLI</h2>
+      <p>La herramienta de línea de comandos oficial de Angular.</p>
+      <div class="code-block">
+        <button class="copy-btn" (click)="copyToClipboard(installCliCode)" title="Copiar código">
+          <i class="fas fa-copy"></i>
+          Copiar
+        </button>
+        <pre><code>npm install -g @angular/cli</code></pre>
+      </div>
+      <p>Verificar instalación:</p>
+      <div class="code-block">
+        <button class="copy-btn" (click)="copyToClipboard(verifyCliCode)" title="Copiar código">
+          <i class="fas fa-copy"></i>
+          Copiar
+        </button>
+        <pre><code>ng version</code></pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>3. Crear un nuevo proyecto</h2>
+      <div class="code-block">
+        <button class="copy-btn" (click)="copyToClipboard(newProjectCode)" title="Copiar código">
+          <i class="fas fa-copy"></i>
+          Copiar
+        </button>
+        <pre><code>ng new mi-proyecto
+cd mi-proyecto
+ng serve</code></pre>
+      </div>
+      <p>Durante la creación te preguntará:</p>
+      <ul>
+        <li>¿Agregar Angular routing? → <strong>Sí</strong></li>
+        <li>¿Qué formato de estilos? → <strong>CSS/SCSS</strong></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>4. Estructura del proyecto</h2>
+      <div class="file-tree">
+        <div class="tree-item">📁 mi-proyecto/</div>
+        <div class="tree-item indent-1">📁 src/</div>
+        <div class="tree-item indent-2">📁 app/ <span class="comment">← Componentes</span></div>
+        <div class="tree-item indent-2">📄 index.html</div>
+        <div class="tree-item indent-2">📄 main.ts</div>
+        <div class="tree-item indent-2">📄 styles.css</div>
+        <div class="tree-item indent-1">📄 angular.json <span class="comment">← Configuración</span></div>
+        <div class="tree-item indent-1">📄 package.json</div>
+        <div class="tree-item indent-1">📄 tsconfig.json</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>5. Comandos útiles</h2>
+      <div class="command-grid">
+        <div class="command-card">
+          <h4>Iniciar servidor</h4>
+          <code>ng serve</code>
+          <p>http://localhost:4200</p>
+        </div>
+        <div class="command-card">
+          <h4>Crear componente</h4>
+          <code>ng generate component nombre</code>
+        </div>
+        <div class="command-card">
+          <h4>Crear servicio</h4>
+          <code>ng generate service nombre</code>
+        </div>
+        <div class="command-card">
+          <h4>Compilar para producción</h4>
+          <code>ng build</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-container">
+      <h3>📹 Video tutorial de instalación</h3>
+      <div class="video-placeholder">
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/3qBXWUpoPHo" 
+            title="Tutorial de instalación de Angular"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="navigation-buttons">
+      <button class="btn btn-secondary" (click)="navigateWithScrollTop('/justificacion')">← Justificación</button>
+      <button class="btn btn-primary" (click)="navigateWithScrollTop('/primeros-pasos')">Primeros pasos →</button>
+    </div>
+  </div>
+</div>
