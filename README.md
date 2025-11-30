@@ -6,11 +6,11 @@ Una aplicación web moderna y completa creada con Angular que sirve como tutoria
 
 Esta aplicación web tutorial cubre todos los aspectos fundamentales de Angular con un diseño moderno, animaciones y contenido multimedia.
 
-### Contenido del Tutorial
+### Contenido del tutorial
 
 1. **Justificación** - ¿Para qué sirve Angular?
 2. **Instalación** - Configuración del entorno
-3. **Primeros Pasos** - Aplicación "Hola Mundo"
+3. **Primeros pasos** - Aplicación "Hola Mundo"
 4. **Utilización** - Crear aplicaciones base
 5. **Funcionamiento** - Arquitectura de Angular
 6. **Conclusiones** - Resumen y próximos pasos
@@ -63,7 +63,7 @@ src/app/
 └── styles.scss
 ```
 
-## Características de Diseño
+## Características de diseño
 
 - Paleta de colores moderna (Púrpura, gradientes)
 - Cards con efectos hover
