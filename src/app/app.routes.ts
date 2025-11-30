@@ -1,13 +1,22 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home';
+import { InstalacionComponent } from './components/instalacion/instalacion';
+import { FuncionamientoComponent } from './components/funcionamiento/funcionamiento';
+import { PrimerosPasosComponent } from './components/primeros-pasos/primeros-pasos';
+import { UtilizacionComponent } from './components/utilizacion/utilizacion';
+import { JustificacionComponent } from './components/justificacion/justificacion';
+import { ConclusionesComponent } from './components/conclusiones/conclusiones';
+import { DemoComponent } from './components/demo/demo';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', loadComponent: () => import('./components/home/home').then(m => m.HomeComponent) },
-  { path: 'justificacion', loadComponent: () => import('./components/justificacion/justificacion').then(m => m.JustificacionComponent) },
-  { path: 'instalacion', loadComponent: () => import('./components/instalacion/instalacion').then(m => m.InstalacionComponent) },
-  { path: 'primeros-pasos', loadComponent: () => import('./components/primeros-pasos/primeros-pasos').then(m => m.PrimerosPasosComponent) },
-  { path: 'utilizacion', loadComponent: () => import('./components/utilizacion/utilizacion').then(m => m.UtilizacionComponent) },
-  { path: 'funcionamiento', loadComponent: () => import('./components/funcionamiento/funcionamiento').then(m => m.FuncionamientoComponent) },
-  { path: 'conclusiones', loadComponent: () => import('./components/conclusiones/conclusiones').then(m => m.ConclusionesComponent) },
-  { path: '**', redirectTo: '/home' }
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'instalacion', component: InstalacionComponent },
+  { path: 'funcionamiento', component: FuncionamientoComponent },
+  { path: 'primeros-pasos', component: PrimerosPasosComponent },
+  { path: 'utilizacion', component: UtilizacionComponent },
+  { path: 'justificacion', component: JustificacionComponent },
+  { path: 'conclusiones', component: ConclusionesComponent },
+  { path: 'demo', component: DemoComponent },
+  { path: '**', redirectTo: '' }
 ];
