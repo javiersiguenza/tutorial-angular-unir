@@ -36,7 +36,10 @@ jobs:
       run: npm run build:prod
 
     - name: Copy .nojekyll file
-      run: cp .nojekyll ./dist/angular-tutorial/
+      run: cp .nojekyll ./dist/angular-tutorial/browser/
+
+    - name: List build output (debug)
+      run: ls -la ./dist/angular-tutorial/browser/
 
     - name: Setup Pages
       uses: actions/configure-pages@v4
@@ -44,7 +47,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: './dist/angular-tutorial'
+        path: './dist/angular-tutorial/browser'
 
   deploy:
     environment:
